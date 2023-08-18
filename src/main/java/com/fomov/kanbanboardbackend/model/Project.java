@@ -47,6 +47,18 @@ public class Project {
 					CascadeType.DETACH, CascadeType.REFRESH})
 	private List<ProjectStatus> projectStatuses;
 
+	@OneToMany(mappedBy = "project",
+			fetch = FetchType.LAZY,
+			cascade = {CascadeType.PERSIST, CascadeType.MERGE,
+					CascadeType.DETACH, CascadeType.REFRESH})
+	private List<ProjectPriority> projectPriorities;
+
+	@OneToMany(mappedBy = "project",
+			fetch = FetchType.LAZY,
+			cascade = {CascadeType.PERSIST, CascadeType.MERGE,
+					CascadeType.DETACH, CascadeType.REFRESH})
+	private List<ProjectSprint> projectSprints;
+
 	@PrePersist
 	protected void onCreate() {
 		dateOfCreated = LocalDateTime.now();

@@ -41,8 +41,6 @@ public class User {
 	@Column(name = "date_of_created")
 	private LocalDateTime dateOfCreated;
 
-	private boolean active;
-
 	@ManyToMany(mappedBy = "users",
 			fetch = FetchType.LAZY,
 			cascade = {CascadeType.PERSIST, CascadeType.MERGE,
@@ -58,6 +56,5 @@ public class User {
 	@PrePersist
 	protected void onCreate() {
 		dateOfCreated = LocalDateTime.now();
-		active = false;
 	}
 }
